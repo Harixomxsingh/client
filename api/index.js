@@ -1,12 +1,16 @@
 require("dotenv").config();
+const fs = require("fs");
 const express = require("express");
 const cors = require("cors");
 const { default: mongoose } = require("mongoose");
 const app = express();
 const User = require("./models/User");
+const Post = require("./models/Post");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
+const multer = require("multer");
+const uploadMiddlerWare = multer({ dest: "uploads/" });
 
 const salt = bcrypt.genSaltSync(10);
 const secret = "ajkdfjadkfja73984q85ufjadfdfj4u459023@#$#^%f";
@@ -61,6 +65,24 @@ app.get("/profile", (req, res) => {
 });
 app.post("/logout", (req, res) => {
   res.cookie("token", "").json("ok");
+});
+
+app.post("/post", uploadMiddlerWare.single("file"), async (req, res) => {
+  const { originalname, path } = req.file;
+  const parts = originalname.split(".");
+  const ext = parts[parts.length - 1];
+  const newPath = path + "." + ext;
+  fs.renameSync(path, newPath);
+
+  const { title, summary, content } = req.body;
+  const postDoc = await Post.create({
+    title,
+    summary,
+    content,
+    cover: newPath,
+  });
+
+  res.json(postDoc);
 });
 app.listen(process.env.PORT, () => {
   console.log(`server is on port: ${process.env.PORT}`);
