@@ -81,7 +81,6 @@ app.post("/post", uploadMiddlerWare.single("file"), async (req, res) => {
     content,
     cover: newPath,
   });
-
   res.json(postDoc);
 });
 app.listen(process.env.PORT, () => {
