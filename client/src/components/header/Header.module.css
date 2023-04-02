@@ -1,0 +1,37 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* margin-bottom: 3.2rem; */
+  width: 100%;
+  height: 100%;
+  position: sticky;
+  /* overflow: hidden; */
+  top: 0;
+  background-color: rgba(147, 190, 238, 0.637);
+  /* padding: .5rem .5rem; */
+  /* margin: 0px 0px; */
+  margin-bottom: 12px;
+}
+.header a {
+  list-style: none;
+  text-decoration: none;
+  color: inherit;
+}
+.header nav {
+  display: flex;
+  gap: 1rem;
+}
+.logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.logout {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    width: 100%;
+  }
+}

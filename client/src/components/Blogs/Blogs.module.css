@@ -1,0 +1,34 @@
+.blogs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 0.9rem;
+}
+.img {
+  width: 100%;
+}
+.text h2 {
+  margin: 0px;
+}
+.info {
+  color: #888;
+  font-size: .8rem;
+  margin: 0;
+
+}
+.info a {
+    text-decoration: none;
+    margin-right: .5rem;
+}
+.summary {
+    line-height: 1.5rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+@media screen and (max-width: 765px) {
+  .blogs {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    width: 100%;
+  }
+}
