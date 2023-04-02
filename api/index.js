@@ -83,6 +83,7 @@ app.post("/post", uploadMiddlerWare.single("file"), async (req, res) => {
   });
   res.json(postDoc);
 });
+// test
 app.listen(process.env.PORT, () => {
   console.log(`server is on port: ${process.env.PORT}`);
 });
