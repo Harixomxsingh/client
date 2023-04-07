@@ -91,13 +91,19 @@ app.post("/post", uploadMiddlerWare.single("file"), async (req, res) => {
 });
 app.get("/post", async (req, res) => {
   const posts = await Post.find()
-    .populate("author", ["username"])
+    .populate("author")
     .sort({ createdAt: -1 })
     .limit(20);
   // res.json(await Post.find());
   res.json(posts);
 });
-// test
+
+app.get("/post/:id", async (req, res) => {
+  const { id } = req.params;
+  const postDoc = await Post.findById(id).populate("author");
+  res.json(postDoc);
+});
+
 app.listen(process.env.PORT, () => {
   console.log(`server is on port: ${process.env.PORT}`);
 });

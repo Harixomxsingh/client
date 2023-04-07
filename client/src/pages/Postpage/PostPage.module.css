@@ -1,0 +1,10 @@
+.image {
+  max-height: 200px;
+  display: flex;
+  /* flex-direction: column; */
+  overflow: hidden;
+}
+.img {
+  object-fit: cover;
+  object-position: center center;
+}
